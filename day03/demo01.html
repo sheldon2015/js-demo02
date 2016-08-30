@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!--
+        width=device-width,user-scalable=0,initial-scale=1,maximum-scale=1
+        visual viewport和layout viewport.
+        可视视口，及屏幕可见的视口大小 ，如iphone6=375px;
+        布局视口及设置content="width=device-width">，不设置会有默认值,
+        当可视视口小于布局视口，再不出现缩放的情况下，会出现滚动条
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1,maximum-scale=1">
+    <title>Document</title>
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            font-size: 30px;
+        }
+        
+        .test {
+            width: 100%;
+            background: red;
+        }
+        
+        .demo {
+            background: green;
+            width: 375px;
+            font-family: h5index-iconfont;
+        }
+        
+        @media screen and (max-width:375px) {
+            .demo {
+                background: blue;
+            }
+        }
+        
+        @media screen and (min-width:375px) and (max-width:400px) {
+            .demo {
+                background: black;
+            }
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <div class='test'>
+        <div>test</div>
+        <div>test</div>
+        <div>test</div>
+        <div>test</div>
+        <div>test</div>
+        <div>test</div>
+        <div>test</div>
+        <div>test</div>
+        <div>test</div>
+    </div>
+    <div class='demo'>
+        <div>test demo</div>
+        <div>test demo</div>
+        <div>test demo</div>
+        <div>test demo</div>
+        <div>test demo</div>
+        <div>test demo</div>
+        <div>test demo</div>
+        <div>test demo</div>
+        <div>test demo</div>
+        <div>test demo</div>
+        <div>test demo</div>
+        <div>test demo</div>
+        <div>test demo</div>
+        <div>test demo</div>
+    </div>
+
+    <script>
+        var dpr = window.devicePixelRatio;
+        console.log(dpr);
+        var deviceWidth = document.documentElement.clientWidth;
+        console.log(deviceWidth);
+        var screenWidth = screen.width;
+        console.log(screenWidth);
+    </script>
+
+</body>
+
+</html>

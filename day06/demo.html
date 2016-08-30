@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式</title>
+</head>
+
+<body>
+    <script>
+        var reg = /\bis\b/;
+        console.log('this  is   a  boy'.replace(reg, 'AA'))
+
+        //分组
+        var reg2 = /(\d{4})-(\d{2})-(\d{2})/;
+        console.log('2016-04-05'.replace(reg2, '$3/$2/$1'))
+
+        //忽略分组
+        var reg3 = /(?:\d{4})-(\d{2})-(\d{2})/;
+        console.log('2016-04-05'.replace(reg3, '$2/$1'))
+
+        // 加了g和没有g   test()方法有区别 ( lastIndex作怪)
+        //当前匹配结果字符串的最后一位的下一位。当返回false后lastIndex又重置为0.非全局模式，lastIndex不起作用
+        var reg4 = /\d/g;
+        var s = '4'
+
+        while (reg4.test(s)) {
+            console.log('reg4', reg4.lastIndex);
+        }
+
+        //exec方法
+        var reg5 = /(\d{4})-(\d{2})-(\d{2})/g;
+        var s = '2015-04-092022-10-12',
+            ret;
+
+        //ret对象
+
+        //["2015-04-09", "2015", "04", "09", index: 0, input: "2015-04-092022-10-12"]
+
+        //["2022-10-12", "2022", "10", "12", index: 10, input: "2015-04-092022-10-12"]
+
+        while (ret = reg5.exec(s)) {
+            //  ret是每次匹配的结果，匹配结束返回null
+            console.log(reg5.lastIndex, ret)
+        }
+
+        console.log(s.match(reg5))
+
+        //字符串的一些方法  
+        //  split  replace match   
+        // 支持正则调用
+        var reg6 = /(\d{4})-(\d{2})-(\d{2})/g;
+        var s = '2015-04-092022/10/12'
+        s.split(/-|\//)
+
+
+        //replace支持传入function函数
+    </script>
+</body>
+
+</html>
