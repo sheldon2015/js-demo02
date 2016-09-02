@@ -2,7 +2,7 @@
 
 
 
-* \b  字符边界
+* \b字符边界
 
 * 元字符
 
@@ -52,10 +52,25 @@
 
     require.js相关的知识
 
+    require.js需要server环境
+
 
 ## day08
 
     flexbox布局
+
+
+## day09
+
+    1. 默认情况
+    background-color是从border外边开始计算
+
+    background-image从padding的外边开始计算
+
+    background-clip从border外边开始剪切
+
+    background-origin设定背景图片的起点位置
+
 
 
 

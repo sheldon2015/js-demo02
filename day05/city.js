@@ -1,0 +1,5 @@
+define(
+	{
+		city: 'bj'
+	}
+);
