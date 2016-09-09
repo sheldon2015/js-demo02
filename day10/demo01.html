@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Within a group of three phone numbers, ensure at least one is complete.</title>
+    <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
+
+</head>
+
+<body>
+    <form id="myform">
+        <label for="mobile_phone">Mobile phone: </label>
+        <input class="left phone-group" id="mobile_phone" name="mobile_phone">
+        <br/>
+        <label for="home_phone">Home phone: </label>
+        <input class="left phone-group" id="home_phone" name="home_phone">
+        <br/>
+        <label for="work_phone">Work phone: </label>
+        <input class="left phone-group" id="work_phone" name="work_phone">
+        <br/>
+        <input type="radio" id="gender_male" value="m" name="gender" />
+        <input type="radio" id="gender_female" value="f" name="gender" />
+        <input type="submit" value="Validate!">
+    </form>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
+    <script>
+        // just for the demos, avoids form submit
+        jQuery.validator.setDefaults({
+            debug: true,
+            success: "valid"
+        });
+        $("#myform").validate({
+            rules: {
+                gender: {
+                    required: true
+                },
+                mobile_phone: {
+                    require_from_group: [1, ".phone-group"]
+                },
+                home_phone: {
+                    require_from_group: [2, ".phone-group"]
+                },
+                work_phone: {
+                    require_from_group: [1, ".phone-group"]
+                }
+            },
+            messages: {
+                gender: {
+                    required: 'aaaaaaaaaaaaaaaa'
+                }
+
+            }
+        });
+    </script>
+</body>
+
+</html>

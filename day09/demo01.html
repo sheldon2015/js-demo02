@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>object对象的assign函数</title>
+</head>
+
+<body>
+    <div>
+        浅拷贝
+    </div>
+    <script>
+        console.log([0, 1, 2, 3, 4].reduce(function(previousValue, currentValue, index, array) {
+            return previousValue + currentValue;
+        }))
+    </script>
+    <script>
+        var a = {
+            a: 1,
+            b: 2,
+            c: {
+                d: 1111
+            }
+
+        }
+        var b = {
+            b: 3,
+            c: [
+                1, 2, 3, 4
+            ]
+        }
+
+
+        console.log('assign', Object.assign(a, b))
+
+
+        //扩展运算符
+        console.log('...', {
+            ...a,
+            ...b
+        })
+    </script>
+
+
+</body>
+
+</html>
