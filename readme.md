@@ -73,6 +73,13 @@
     background-origin设定背景图片的起点位置
 
 
+##  day10
+   注意区分
+   
+    1. mouseover  mouseout mouseenter mouseleave
+    2. keypress  keyup  keydown
+
+
 
 
 
