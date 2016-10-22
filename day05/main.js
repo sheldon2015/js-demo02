@@ -27,5 +27,8 @@ require(['demo.js', 'city.js', 'func.js', 'shim.js'], () => {
     // var s = new Func('aa');
     // console.log('s', s)
 
+
+    console.log('common',require('common').a);
+
 })
 
