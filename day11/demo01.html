@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>测试keypress keydown keyup 事件</title>
+    <style>
+        body {
+            background: blue;
+        }
+        
+        .wrap {
+            background: red;
+            width: 500px;
+            height: 500px;
+            padding: 40px;
+        }
+        
+        .inner {
+            background: green;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <label for="btn"></label>
+        <input type="text" id="btn">
+    </div>
+
+    <div class='wrap'>
+        <div class='inner'>
+            aaaaaaaaaaaa
+        </div>
+    </div>
+    <script src='./../jquery.min.js'></script>
+    <script>
+       
+
+            $('#btn').on({
+
+                //     input:(e)=>{
+                //         console.log('input-----------------------')
+                //         console.log('keyCode',e.keyCode)
+                //         console.log('which',e.which)
+                //         console.log('charcode',e.charCode)
+                //         console.log('key',e.key)
+
+                //     },
+                //     onpropertychange:(e)=>{
+                // console.log('onpropertychange-----------------------')
+                //         console.log('keyCode',e.keyCode)
+                //         console.log('which',e.which)
+                //         console.log('charcode',e.charCode)
+                //         console.log('key',e.key)
+                //     },
+
+                keydown: (e) => {
+                    console.log('keydown-----------------------')
+                    console.log('keyCode', e.keyCode)
+                    console.log('which', e.which)
+                    console.log('charcode', e.charCode)
+                    console.log('key', e.key)
+
+                },
+                keypress: (e) => {
+
+                    //可以区分大小写字母
+                    //不可以区分大小键盘上
+
+
+                    console.log('keypress-----------------------')
+                    console.log('keyCode', e.keyCode)
+                    console.log('which', e.which)
+                    console.log('charcode', e.charCode)
+                    console.log('key', e.key)
+
+                },
+                keyup: (e) => {
+                    console.log('keyup-----------------------')
+                    console.log('keyCode', e.keyCode)
+                    console.log('which', e.which)
+                    console.log('charcode', e.charCode)
+                    console.log('key', e.key)
+
+                }
+
+            })
+
+
+
+            $('.wrap').on({
+                mouseenter:(e)=>{
+                    console.log('-------------mouseenter')
+                    console.log('mouseenter',e.target);
+                    console.log('mouseenter',e.relatedTarget);
+                    console.log('mouseenter',e.currentTarget);
+
+                },
+                mouseleave:(e)=>{
+                
+                    console.log('-------------mouseleave')
+                    
+                    console.log('mouseleave',e.target);
+                    console.log('mouseleave',e.relatedTarget);
+                    console.log('mouseleave',e.currentTarget);
+
+
+                },
+                mouseover:(e)=>{
+                        e.stopPropagation()
+                        e.preventDefault()
+                    console.log('-------------mouseover')
+                    
+                    console.log('mouseover',e.target);
+                    console.log('mouseover',e.relatedTarget);
+                    console.log('mouseover',e.currentTarget);
+
+
+                },
+                mouseout:(e)=>{
+                        e.stopPropagation()
+                           e.preventDefault()
+                    console.log('-------------mouseout')
+                    
+                    console.log('mouseout',e.target);
+                    console.log('mouseout',e.relatedTarget);
+                    console.log('mouseout',e.currentTarget);
+
+
+                },
+
+
+            })
+    
+    </script>
+
+</body>
+
+</html>

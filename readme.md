@@ -103,6 +103,13 @@
 
 
 
+##  day10
+   注意区分
+   
+    1. mouseover  mouseout mouseenter mouseleave
+    2. keypress  keyup  keydown
+
+
 
 
 
