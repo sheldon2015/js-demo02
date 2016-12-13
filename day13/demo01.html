@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>柱状图</title>
+
+    <script src="https://a.alipayobjects.com/g/datavis/g2/2.1.5/g2.js"></script>
+    <script>
+
+
+</head>
+
+<body>
+
+    <div id="c1"></div>
+    <div id='c2'></div>
+    <script>
+      console.log(2);
+      var data = [
+        {genre: 'Sports', sold: 275},
+        {genre: 'Strategy', sold: 115},
+        {genre: 'Action', sold: 120},
+        {genre: 'Shooter', sold: 350},
+        {genre: 'Other', sold: 150},
+      ];
+     
+      var chart = new G2.Chart({
+        id: 'c1', 
+        width : 800,
+        height : 400 
+      });
+     
+      chart.source(data, {
+        genre: {
+          alias: '游戏种类' 
+        },
+        sold: {
+          alias: '销售量'
+        }
+      });
+      chart.interval().position('genre*sold').color('genre')
+      chart.render();
+
+    
+
+
+    </script>
+
+    <script>
+    var data = [
+        {name: 'Chrome', value: 24.03},
+        {name: 'Microsoft Internet Explorer', value: 56.33 },
+        {name: 'Firefox', value: 10.38},
+        {name: 'Safari',  value: 4.77},
+        {name: 'Proprietary or Undetectable', value: 0.2},
+        {name: 'Opera', value: 0.91}
+      ];
+      var Stat = G2.Stat;
+      var chart = new G2.Chart({
+        id: 'c2',
+        width: 1000,
+        height: 500
+      });
+      chart.source(data);
+     
+      chart.coord('theta', {
+        radius: 0.8 
+      });
+      chart.legend('name', {
+        position: 'bottom'
+      });
+      chart.tooltip({
+        title: null,
+        map: {
+          value: 'value'
+        }
+      });
+      chart.intervalStack()
+        .position(Stat.summary.percent('value'))
+        .color('name')
+        .label('name*..percent',function(name, percent){
+        percent = (percent * 100).toFixed(2) + '%';
+        return name + ' ' + percent;
+      });
+      chart.render();
+      // 设置默认选中
+      var geom = chart.getGeoms()[0];
+      var items = geom.getData(); 
+      geom.setSelected(items[1]);
+
+
+    //   document.oncontextmenu=function(){	
+	//      return false;
+    //   }
+    
+      </script>
+</body>
+
+</html>

@@ -1,6 +1,7 @@
 /**
  *
  */
+
 var debounce = function (func, threshold, execAsap) {
     var timeout;
 
@@ -15,14 +16,11 @@ var debounce = function (func, threshold, execAsap) {
             timeout = null;
         };
 
-
         if (timeout) {
             clearTimeout(timeout);
         } else if (execAsap) {
             func.apply(obj, args);
         }
-
-
 
         timeout = setTimeout(delayed, threshold || 100);
     };

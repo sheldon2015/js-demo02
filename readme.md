@@ -63,7 +63,7 @@
 ## day09
 
     1. 默认情况
-    
+
     background-color是从border外边开始计算
 
     background-image从padding的外边开始计算
@@ -73,11 +73,25 @@
     background-origin设定背景图片的起点位置
 
 
-##  day10
+## day10
+
    注意区分
-   
+
     1. mouseover  mouseout mouseenter mouseleave
     2. keypress  keyup  keydown
+
+
+## day11
+
+thunk的概念和函数
+
+
+## day14
+
+    perspective属性 perspective函数都可设置3d场景，有一些区别
+
+    1. perspective属性可以取值为none或长度值；而perspective()函数取值只能大于0，如果取值为0或比0小的值，将无法激活3D空间；
+    2. perspective属性用于变形对像父元素；而perspective()函数用于变形对像自身，并和transform其他函数一起使用。
 
 
 

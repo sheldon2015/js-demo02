@@ -2,42 +2,54 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>测试keypress keydown keyup 事件</title>
-    <style>
-        body {
-            background: blue;
-        }
-        
-        .wrap {
-            background: red;
-            width: 500px;
-            height: 500px;
-            padding: 40px;
-        }
-        
-        .inner {
-            background: green;
-            width: 200px;
-            height: 200px;
-        }
-    </style>
+	<meta charset="UTF-8">
+	<title>测试keypress keydown keyup 事件</title>
+	<style>
+		body {
+			background: gray;
+		}
+		
+		.wrap {
+			background: red;
+			width: 500px;
+			height: 500px;
+			padding: 40px;
+		}
+		
+		.inner {
+			background: green;
+			width: 200px;
+			height: 200px;
+		}
+	</style>
 </head>
 
 <body>
-    <div>
-        <label for="btn"></label>
-        <input type="text" id="btn">
-    </div>
+	<div>
+		<label for="btn"></label>
+		<input type="text" id="btn">
+	</div>
 
-    <div class='wrap'>
-        <div class='inner'>
-            aaaaaaaaaaaa
-        </div>
-    </div>
-    <script src='./../jquery.min.js'></script>
-    <script>
-       
+	<div class='wrap'>
+		<div class='inner'>
+			aaaaaaaaaaaa
+		</div>
+	</div>
+
+	<div>
+
+
+
+
+
+
+
+
+
+	</div>
+	<script src='./../jquery.min.js'></script>
+	<script>
+
 
             $('#btn').on({
 
@@ -100,9 +112,9 @@
 
                 },
                 mouseleave:(e)=>{
-                
+
                     console.log('-------------mouseleave')
-                    
+
                     console.log('mouseleave',e.target);
                     console.log('mouseleave',e.relatedTarget);
                     console.log('mouseleave',e.currentTarget);
@@ -113,7 +125,7 @@
                         e.stopPropagation()
                         e.preventDefault()
                     console.log('-------------mouseover')
-                    
+
                     console.log('mouseover',e.target);
                     console.log('mouseover',e.relatedTarget);
                     console.log('mouseover',e.currentTarget);
@@ -122,9 +134,9 @@
                 },
                 mouseout:(e)=>{
                         e.stopPropagation()
-                           e.preventDefault()
+                         e.preventDefault()
                     console.log('-------------mouseout')
-                    
+
                     console.log('mouseout',e.target);
                     console.log('mouseout',e.relatedTarget);
                     console.log('mouseout',e.currentTarget);
@@ -134,7 +146,33 @@
 
 
             })
-    
+
+
+
+            console.log('start')
+
+            setTimeout(()=>{
+                console.log('1111111')
+            })
+
+
+            var   i=1;
+            while(i<1000000000){
+                i++
+
+            }
+
+
+            console.log('end')
+            
+
+
+
+
+
+
+
+
     </script>
 
 </body>

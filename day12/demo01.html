@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>thunk 函数</title>
+</head>
+
+<body>
+
+    a
+
+
+
+	<script>
+    //传值调用
+
+    var a=1;
+
+    function   showResult(arg){
+
+        return arg*3;
+    }
+  console.log(showResult(a+1)) //6
+
+
+    //thunk函数将a=1表达式，包装成函数
+
+
+    var   thunk=()=>{
+        return  a+1
+    }
+     function   showResult1(thunk){
+
+        return (thunk()) * 3;
+    }
+
+    console.log(showResult1(thunk))//6
+    </script>
+
+
+	<script>
+
+       var s= [0, 1, 2, 3, 4].reduceRight(function(previousValue, currentValue, index, array) {
+            console.log('-------------------------------------right')
+            console.log(previousValue)
+            console.log(currentValue)
+            console.log(array)
+                   return previousValue + currentValue;
+        }, 10);
+
+
+      var m=  [0, 1, 2, 3, 4].reduce(function(previousValue, currentValue, index, array) {
+              console.log('-------------------------------------left')
+            console.log(previousValue)
+            console.log(currentValue)
+            console.log(array)
+                   return previousValue + currentValue;
+        }, 10);
+
+
+
+               [ {a:1, b:2},{a:2, b:2},{a:3, b:2}].reduce((previousValue, currentValue)=>{
+
+
+                 console.log('previousValue',previousValue)
+                 console.log('currentValue',currentValue)
+
+
+                
+              })
+
+
+
+
+    </script>
+
+</body>
+
+</html>
