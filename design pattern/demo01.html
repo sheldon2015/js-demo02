@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>单例模式(使用闭包构造私有方法和私有变量)</title>
+</head>
+
+<body>
+    <script>
+        Single = (function() {
+            var name = 'single'; 
+
+            return {
+                //暴露public方法和属性
+                setName: (arg) => {
+                    name = arg;
+                    console.log(name)
+                },
+                getName: () => {
+                    return name;
+                }
+            }
+        })();
+
+        Single.setName('ywz');
+        console.log('name', Single.getName())
+    </script>
+
+
+
+    <script>
+        //创建惰性加载的单例
+
+        LazySingle = (function() {
+            var single; //判断是否存在实例
+
+            function constructor() {
+                var name = 'single';
+                return {
+                    //暴露public方法和属性
+                    setName: (arg) => {
+                        name = arg;
+                        console.log(name)
+                    },
+                    getName: () => {
+                        return name;
+                    }
+                }
+
+            };
+
+            return {
+                //public 方法
+                init: function() {
+
+                    single = single || constructor()
+
+                    return single;
+                }
+            }
+        })();
+
+        LazySingle.init().setName('xtf')
+        LazySingle.init().getName()
+    </script>
+
+</body>
+
+</html>
