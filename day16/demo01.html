@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>渐变</title>
+    <style>
+        * {
+            margin: 0;
+        }
+        
+        .test {
+            height: 40px;
+            width: 100%;
+            background-color: black;
+            background-image: linear-gradient(to right, red 10%, green 50%, blue)
+        }
+        
+        .test1 {
+            height: 40px;
+            width: 100%;
+            background-color: black;
+            background-image: linear-gradient(to right, transparent 10%, red 10%, green 50%, blue)
+        }
+        
+        .test2 {
+            height: 40px;
+            width: 100%;
+            background-color: black;
+            background-image: linear-gradient(to right, red 10%, transparent 10%, green 50%, blue)
+        }
+        
+        .test3 {
+            width: 100px;
+            height: 50px;
+            background: red;
+            color: white;
+            font-weight: bold;
+            position: relative;
+            animation: mymove 5s alternate infinite;
+        }
+        
+        #div1 {
+            animation-timing-function: linear;
+        }
+        
+        #div2 {
+            animation-timing-function: ease;
+        }
+        
+        #div3 {
+            animation-timing-function: ease-in;
+        }
+        
+        #div4 {
+            animation-timing-function: ease-out;
+        }
+        
+        #div5 {
+            animation-timing-function: ease-in-out;
+        }
+        
+        @keyframes mymove {
+            0% {
+                /*  steps中的second arguments  start  or  end  */
+                /*A direction of “start” denotes a left-continuous function and our animation’s first step 
+                will be completed as soon as the animation begins. It will jump immediately to the end of
+                 the first step and stay there until the end of this step duration.*/
+                /* A direction of “end” denotes a right-continuous function and directs the movement to stay put until the
+                 duration of the first step is completed. Each option essentially moves the element from a different
+                 side and will produce different positioning for the same animation.*/
+                left: 0px;
+                animation-timing-function: steps(2, start);
+            }
+            /*50% {
+                left: 600px;
+                background: black;
+                  
+            }*/
+            100% {
+                left: 1200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="test"></div>
+    <div class="test1"></div>
+    <div class="test2"></div>
+    <p>
+        <strong>注意:</strong> animation-timing-funtion属性不兼容 Internet Explorer 9以及更早版本的浏览器
+    </p>
+    <div class='test3' id="div1">linear</div>
+    <div class='test3' id="div2">ease</div>
+    <div class='test3' id="div3">ease-in</div>
+    <div class='test3' id="div4">ease-out</div>
+    <div class='test3' id="div5">ease-in-out</div>
+</body>
+
+</html>

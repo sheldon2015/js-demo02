@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>svg</title>
+</head>
+
+<body>
+
+    <!--<svg width="320" height="200">
+        <text font-family="microsoft yahei" font-size="120" y="160" x="160">马
+            <animate attributeName="x" values='160;60;160;' dur="3s" fill="freeze" />
+        </text>
+    </svg>
+
+    <svg width="100%" height="200">
+        <path d='M80 40H400A50 50 90 1 1 400 140H80A50 50 -90 1 1 80 40' stroke='red' fill='none'></path>
+        <circle id='circle' stroke='black' r='4'>
+            <animateMotion onbegin='console.log(1)' onend="console.log(2);circle.style.visibility='hidden'" onload='console.log(3)' onrepeat='console.log(4)' id='test' path='M80 40H400A50 50 90 1 1 400 140H80A50 50 -90 1 1 80 40' dur="1s" fill="freeze" />
+</circle>
+
+</svg>
+
+
+<svg height='800' width='100%'>
+
+    <text font-family="microsoft yahei" font-size="12" x="40" y="40">100
+        <animate to="0" dur="1s" fill="freeze" />
+
+    </text>
+
+
+
+
+    <path id='path1' d="M40 40A40 40 0 1 1 120 40" stroke='red' fill='none' stroke-dasharray='125.6' stroke-dashoffset='125.6'>
+        <animate attributeName="stroke-dashoffset" to='0' dur="3s" fill="freeze"></animate>
+    </path>
+
+</svg>-->
+
+    <svg height='800' width='100%'>
+        <path id='path2' d="M40 40A40 40 0 1 1 120 40" stroke='red' fill='none' stroke-dasharray='125.6' stroke-dashoffset='125.6'>
+
+        </path>
+    </svg>
+
+    <script>
+
+        function Linear(t, b, c, d) {
+            return c * t / d + b;
+        }
+
+
+
+
+
+        // var test = document.getElementById("test");
+        // var circle = document.getElementById("circle");
+
+
+        // setInterval(() => {
+        //     //运行动画
+        //     circle.style.visibility = 'visible'
+        //     test.beginElement();
+        // }, 4000)
+
+
+        var path2 = document.getElementById("path2");
+
+        var t = new Date().getTime();
+
+        var id = requestAnimationFrame(function () {
+
+            // Uncaught RangeError: Maximum call stack size exceeded
+
+
+
+            if (new Date().getTime() - t < 3000) {
+                path2.setAttribute('stroke-dashoffset', Math.floor(Linear(new Date().getTime() - t, 125.6, -125.6, 3000)));
+                console.log(arguments.callee);
+                // arguments.callee();
+            }
+
+        })
+
+
+        // function test() {
+
+        //     if (new Date().getTime() - t < 3000) {
+        //         path2.setAttribute('stroke-dashoffset', Math.floor(Linear(new Date().getTime() - t, 125.6, -125.6, 3000)));
+        //         requestAnimationFrame(test);
+        //     }
+
+        // }
+
+        // test();
+
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>svg 视窗坐标系 用户坐标系</title>
+</head>
+
+<body>
+    <!--
+        svg   width  height  建立视窗,定义svg viewport大小
+
+        viewbox 建立视窗坐标系
+
+        preserveAspectRatio 定义了怎么将viewbox填满viewport
+
+        preserveAspectRatio='arg1,arg2',默认值xMidYMid meet
+
+        arg1 定义怎么对齐viewbox
+
+        arg2 定义怎么缩放viewbox：
+
+        1. meet 等比例缩放viewbox，完全在viewport中显示
+
+        2. slice 等比例缩放viewbox,尽量铺满viewport，viewport之外的剪切掉
+
+        3. none  不考虑等比例缩放，直接铺满
+
+
+    -->
+
+    <svg width='160' height='320' viewbox='0 0 80 160'>
+        <circle id='circle' cx="40" cy="40" r="30" stroke="green" stroke-width="4" fill="yellow" />
+    </svg>
+
+    <svg height='400' width='400'>
+        <circle id='circle' cx="40" cy="40" r="40" stroke="green" stroke-width="4" fill="yellow" />
+        <use xlink:href="#circle" transform=" translate(40 0)" />
+    </svg>
+
+    <svg>
+        <!--stroke时，一半线宽在里面，一半线宽在外面-->
+        <rect x="10" y="70" width="25" height="30" style="fill: #0000ff;
+stroke: red; stroke-width: 7; stroke-opacity: 0.5;"/>
+</svg>
+
+<svg width="240px" height="240px" viewBox="0 0 240 240">
+    <title>Grouped Drawing</title>
+    <desc>Stick-figure drawings of a house and people</desc>
+    <defs>
+        <g id="house" style="stroke: black;">
+<desc>House with door</desc>
+<rect x="0" y="41" width="60" height="60" />
+<polyline points="0 41, 30 0, 60 41" />
+<polyline points="30 101, 30 71, 44 71, 44 101" />
+</g>
+<g id="man" style="fill: none; stroke: black;">
+<desc>Male stick figure</desc>
+<circle cx="10" cy="10" r="10" />
+<line x1="10" y1="20" x2="10" y2="44" />
+<polyline points="1 58, 10 44, 19 58" />
+<polyline points="1 24, 10 30, 19 24" />
+</g>
+<g id="woman" style="fill: none; stroke: black;">
+<desc>Female stick figure</desc>
+<circle cx="10" cy="10" r="10" />
+<polyline points="10 20, 10 34, 0 44, 20 44, 10 34" />
+<line x1="4" y1="58" x2="8" y2="44" />
+<line x1="12" y1="44" x2="16" y2="58" />
+<polyline points="1 24, 10 30, 19 24" />
+</g>
+<g id="couple">
+    <desc>Male and female stick figures</desc>
+    <use xlink:href="#man" x="0" y="0" />
+    <use xlink:href="#woman" x="25" y="0" />
+</g>
+</defs>
+<!-- make use of the defined groups -->
+<use xlink:href="#house" x="0" y="0" style="fill: #cfc;"/>
+<use xlink:href="#couple" x="70" y="40" />
+<use xlink:href="#house" x="120" y="0" style="fill: #99f;"/>
+<use xlink:href="#couple" x="190" y="40" />
+<use xlink:href="#woman" x="0" y="145" />
+<use xlink:href="#man" x="25" y="145" />
+<use xlink:href="#house" x="65" y="105" style="fill: #c00;"/>
+
+
+
+</svg>
+<svg>
+    <g style="stroke: black; fill: none;">
+<!-- single line -->
+<path d="M 10 10 L 100 10" />
+<!-- a right angle -->
+<path d="M 10, 20 L 100, 20 L 100,50" />
+<!-- two 30-degree angles -->
+<path d="M 40 60 L 10, 60 L 40 42.68
+M 60, 60 L 90 60 L 60, 42.68" />
+</g>
+
+<g style="stroke: black; fill: none;" transform='translate(80,0)'>
+<path d="M 10 10 L 100 10 M 10, 20 L 100, 20 L 100,50 M 40 60 L 10, 60 L 40 42.68
+M 60, 60 L 90 60 L 60, 42.68" />
+
+
+
+</g>
+</svg>
+<svg width="400px" height="300px" viewBox="0 0 400 300"
+>
+<!-- gray drop shadow -->
+<ellipse cx="154" cy="154" rx="150" ry="120" style="fill: #999999;"/>
+<!-- light blue ellipse -->
+<ellipse cx="152" cy="152" rx="150" ry="120" style="fill: #cceeff;"/>
+<!-- large light red semicircle fills upper half,
+followed by small light red semicircle that dips into
+lower-left half of symbol -->
+<path d="M 302 152 A 150 120, 0, 1, 0, 2 152
+A 75 60, 0, 1, 0, 152 152" style="fill: #ffcccc;"/>
+<!-- light blue semicircle rises into upper-right half of symbol -->
+<path d="M 152 152 A 75 60, 0, 1, 1, 302 152" style="fill: #cceeff;"/>
+</svg>
+
+
+<svg width="400px" height="300px" viewBox="0 0 400 300">
+    <!-- gray drop shadow -->
+    <ellipse cx="154" cy="154" rx="150" ry="120" style="fill: #999999;"/>
+</svg>
+<!-- light blue ellipse -->
+<svg width="400px" height="300px" viewBox="0 0 400 300">
+    <ellipse cx="152" cy="152" rx="150" ry="120" style="fill: #cceeff;"/>
+</svg>
+<!-- large light red semicircle fills upper half,
+followed by small light red semicircle that dips into
+lower-left half of symbol -->
+
+<svg width="400px" height="300px" viewBox="0 0 400 300">
+    <path d="M 302 152 A 150 120, 0, 1, 0, 2 152
+A 75 60, 0, 1, 0, 152 152" style="fill: #ffcccc;"/>
+
+</svg>
+
+<svg width="400px" height="300px" viewBox="0 0 400 300">
+    <!-- light blue semicircle rises into upper-right half of symbol -->
+    <path d="M 152 152 A 75 60, 0, 1, 1, 302 152" style="fill: #cceeff;"/>
+</svg>
+
+
+
+</body>
+
+</html>
