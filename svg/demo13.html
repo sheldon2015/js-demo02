@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>filter</title>
+</head>
+
+<body>
+    <!--
+    filter  default value  x='-10%' y='-10%'  width='120%' height='120%'
+    高斯模糊
+    stdDeviation:定义模糊值
+   -->
+    <div>
+        <svg height="200" width="100%">
+          <defs>
+            <filter id="f1"  width='200%' height='50%'  x='0' >
+              <feGaussianBlur id='fg1'   in="SourceGraphic" stdDeviation="15"></feGaussianBlur>
+            </filter>
+          </defs>
+          <rect  x='600' y='100'   width="100" height="100"  fill="yellow" filter="url(#f1)"></rect>
+      </svg>
+    </div>
+    <div>
+        <svg height="200" width="100%">
+          <defs>
+            <filter id="f2"    >
+              <!-- 类比box-shadow -->
+              <feGaussianBlur  id='fg2' in="SourceAlpha" stdDeviation="2"  result='blur'></feGaussianBlur>
+              <feOffset in='blur' dx='10' dy='10'   result='offsetblur' ></feOffset>
+              <feMerge>
+                <!-- 后面的的primitive在栈顶 -->
+                <feMergeNode in='offsetblur' /></feMergeNode>
+                <feMergeNode in='SourceGraphic' /></feMergeNode>//
+              </feMerge>
+            </filter>
+          </defs>
+          <rect x='600' y='50' width="100" height="100"  fill="yellow" filter="url(#f2)"></rect>
+      </svg>
+    </div>
+    <div>
+        <input class='change' type="range">
+    </div>
+    <script>
+        const fg1 = document.querySelector('#fg2');
+        const change = document.querySelector('.change');
+        change.addEventListener('input', function() {
+            fg1.setAttribute('stdDeviation', this.value)
+        })
+    </script>
+</body>
+
+</html>

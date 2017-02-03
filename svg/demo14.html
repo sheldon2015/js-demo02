@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>filter fecolormatrix feImage </title>
+</head>
+
+<body>
+
+    <svg width='100%' height='200'>
+      <defs>
+        <filter  id='glow'>
+          <!-- 当不写in，第一个primitive 的in 的 default值为   SourceGraphic -->
+          <!-- 当不写in ，第一个除外，当前primitive的in值是他之前的primitive的result值-->
+            <feColorMatrix type="matrix"
+            values=
+            "0 0 0 0 0
+            0 0 0 0.9 0
+            0 0 0 0.9 0
+            0 0 0 1 0"/>
+            <feGaussianBlur stdDeviation="2.5"
+            result="coloredBlur"/>
+            <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+      </defs>
+      <text x="120" y="50" style="filter: url(#glow); fill: #003333; font-size:18;">
+            Spring
+           <tspan x="120" y="70">
+             Flower
+           </tspan>
+       </text>
+    </svg>
+
+</body>
+
+</html>

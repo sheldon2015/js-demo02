@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>animation 动画</title>
+    <style>
+        svg {
+            background: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <svg height='200' width='100%'>
+        <rect x="10" y="10" width="200" height="80" stroke="black" fill="none"></rect>
+        <rect x="10" y="10" width="200" height="80" stroke="black" fill="none">
+            <!--animate中的fill属性是SMIL中的定义的属性  -->
+            <animate attributeName="width"  from="200" by="-180" begin="0s" dur="5s" fill="freeze" />
+        </rect>
+    </svg>
+    <svg height='200' width='100%'>
+      <rect x="10" y="10" width="20" height="20"
+          style="stroke: black; fill: green; style: fill-opacity: 0.25;">
+          <animate attributeName="width"
+          from="20" to="200" begin="0s" dur="4s" fill="freeze"/>
+
+          <animate attributeName="height"
+          from="20" to="150" begin="0s" dur="8s" fill="freeze"/>
+
+          <!-- 同一个属性放到多个animate中 -->
+          <animate attributeName="fill-opacity"
+          from="0.25" to="1" begin="0s" dur="3s" fill="freeze"/>
+
+          <animate attributeName="fill-opacity"
+          from="1" to="0.25" begin="3s" dur="3s" fill="freeze"/>
+      </rect>
+    </svg>
+
+    <!-- svg 同步动画，同步不同的动画  通过设置不同的begin,end,dur值 -->
+    <svg height='200' width='100%'>
+          <rect x="10" y="10" width="20" height="20" style="stroke: black; fill: #cfc;">
+              <animate  id='rectWidth' attributeName="width" attributeType="XML"
+              begin="0s" dur="8s" from="20" to="120" fill="freeze"/>
+              <animate attributeName="height" attributeType="XML"
+              begin="0s" dur="8s" from="20" to="120" fill="freeze"/>
+          </rect>
+          <circle cx="70" cy="70" r="20"  style="fill: #ccf; stroke: black;">
+              <animate attributeName="r" attributeType="XML"
+              begin="rectWidth.end+4" dur="4s" from="20" to="50" fill="freeze"/>
+          </circle>
+    </svg>
+    <svg height='200' width='100%'>
+          <circle cx="60" cy="60" r="15" style="fill: none; stroke: red;">
+            <animate id="circleAnim" attributeName="cx" attributeType="XML" begin="0s" dur="5s" repeatCount="3"
+            from="60" to="260" fill="freeze"/>
+          </circle>
+
+          <rect x="230" y="80" width="30" height="30" style="fill: #ccf; stroke: black;">
+
+            <animate attributeName="x" attributeType="XML" begin="circleAnim.repeat(1)+2.5s" dur="5s"
+            from="230" to="30" fill="freeze"/>
+          </rect>
+    </svg>
+    <svg height='200' width='100%'>
+          <polygon points="30 30 70 30 90 70 10 70" style="fill:#fcc; stroke:black">
+              <animate id="animation" attributeName="points" attributeType="XML" to="50 30 70 50 50 90 30 50" begin="0s" dur="5s" fill="freeze" />
+          </polygon>
+          <path d="M15 50 Q 40 15, 50 50, 65 32, 100 40" style="fill:none; stroke: black" transform="translate(0,50)">
+              <animate attributeName="d" attributeType="XML" to="M50 15 Q 15 40, 50 50, 32 65, 40 100" begin="0s" dur="5s" fill="freeze"/>
+          </path>
+    </svg>
+
+    <!-- 指定过渡中间值 -->
+
+    <svg height="200" width="100%">
+          <circle cx="50" cy="50" r="30" style="fill: black; stroke:black;">
+            <animate attributeName="fill" begin="1s" dur="1s" values="black;red;black" fill="freeze"/>
+            <animate attributeName="r"     begin="1s" dur="5s" values="30;10;30" fill="freeze"/>
+          </circle>
+    </svg>
+
+    <!--重要的属性
+        keyTimes:  分割durtion，每一个transition section 占用多少时间，默认哥哥transition section占用时间相等，平分dur
+
+        calcMode:
+        1.paced
+        2.linear 如下面的例子，有三个过渡，每一个过渡的speed在各自的transition 阶段相等(30->5->10->30)
+        3.discrete  类似于keyframe中的steps函数
+        4.spline   需要定义bezel曲线，用keySplines定义bezel的点
+        keySpines:默认值 0 0 1 1
+      -->
+    <svg height="700" width="100%">
+          <circle cx="50" cy="50" r="30" style="fill: black; stroke:black;">
+            <animate attributeName="r" dur="9s" values="30;5;10;30" calcMode='discrete'  fill="freeze"/>
+          </circle>
+          <circle cx="50" cy="200" r="30" style="fill: black; stroke:black;">
+            <animate attributeName="r" dur="9s" values="30;5;10;30" calcMode='paced'  fill="freeze"/>
+          </circle>
+          <circle cx="50" cy="350" r="30" style="fill: black; stroke:black;">
+            <animate attributeName="r" dur="9s" values="30;5;10;30" calcMode='linear'  fill="freeze"/>
+          </circle>
+          <circle cx="50" cy="500" r="30" style="fill: black; stroke:black;">
+            <animate attributeName="r" dur="9s" values="30;5;10;30" calcMode='spline' keySplines="1 0 .25 .25; 0 0 1 1;1 0 .25 .25;" fill="freeze"/>
+          </circle>
+    </svg>
+
+    <!-- set -->
+    <svg width='100%' height='200'>
+          <circle cx="60" cy="60" r="30" style="fill: #ff9; stroke: gray;">
+            <animate id="c1" attributeName="r" attributeType="XML" begin="0s" dur="4s" from="30" to="0" fill="freeze"/>
+          </circle>
+          <text text-anchor="middle" x="60" y="60" style="display: none;">
+              <set attributeName="display" attributeType="CSS" to="block" begin="4.5s" dur="1s" fill="freeze"/>
+              All gone!
+          </text>
+    </svg>
+</body>
+
+</html>

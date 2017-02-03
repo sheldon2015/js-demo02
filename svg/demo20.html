@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>stroke-dasharray指定虚线</title>
+    <style>
+        svg {
+            background-color: lightblue
+        }
+
+        #path {
+            stroke: red;
+            stroke-width: 1;
+            fill: none;
+            stroke-dasharray: 400,400;
+            animation: stroke .5s forwards
+        }
+
+        #path1 {
+            stroke: black;
+            stroke-width: 1;
+            fill: none;
+            /*
+            当只有奇数个数字的时候，stroke-dasharray会循环
+            过程：
+            20实线 5虚线 20实线 20 虚线 5 实线 20虚线 --->循环
+            */
+            stroke-dasharray: 20, 5, 20;
+        }
+
+        @keyframes stroke {
+            0% {
+                stroke-dasharray: 400, 400
+            }
+            100% {
+                stroke-dasharray: 400, 0
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <svg width='1000' height='200' viewbox='0 0 1000 200'>
+        <path id='path' d='M20 20H820V40H20Z'></path>
+        <path id='path1' d='M20 100H820'></path>
+    </svg>
+
+</body>
+
+</html>

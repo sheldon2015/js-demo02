@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+
+        function test(e) {
+            // 兼容firefox,IE,chrome
+            var event = event || e
+
+            console.log(event)
+
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <div onclick="test(arguments[0])"> click </div>
+
+</body>
+
+</html>

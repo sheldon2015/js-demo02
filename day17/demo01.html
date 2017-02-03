@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        css混合模式
+        <!--
+        混合模式定义了层与层之间怎么相互影响融合(重叠部分)
+
+        background-blend-mode
+
+        mix-blend-mode:
+        规定源元素如何将颜色和背景混合起来
+        mix-blend-mode可以与isolation配合使用达到与 background-blend-mode相同的效果
+
+        混合模式其实可以类比canvas(globalCompositeOperator)，svg
+        -->
+    </title>
+    <style>
+    .test{     
+        width:200px;
+        height:200px;
+        background: red url(./../bg2.png) no-repeat center center;
+        margin: 0 10px 5px 0;
+        background-blend-mode: normal
+    }
+
+    .test1{
+         background-blend-mode: difference
+    }
+
+    .test-wrap{
+        width:200px;
+        height:200px;
+        background: red;
+        mix-blend-mode: difference
+    }
+
+    .test-inner{
+        width:100px;
+        height:100px;
+        margin: auto;
+        background: url(./../bg2.png) no-repeat center center;
+    }
+
+    .test-mix-blend{
+        
+        mix-blend-mode: difference;
+    }
+
+
+
+    
+    </style>
+</head>
+
+<body>
+    <div class='test'> test </div>
+    <div style='isolation: isolate'>
+<div class='test  test-mix-blend'>
+    test
+</div>
+</div>
+<div class='test test1'> test </div>
+
+<div class='test-wrap'>
+    <div class='test-inner'>inner</div>
+</div>
+
+</body>
+
+</html>

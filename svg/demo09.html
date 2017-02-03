@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>lineargradient 渐变 </title>
+</head>
+
+<body>
+
+    <svg width="100%">
+        <defs>
+            <lineargradient id='lineargradient'>
+                <stop offset="0%" stop-color="red" />
+                <stop offset="100%" stop-color="yellow" />
+            </lineargradient>
+            <!--避免重复，直接引用-->
+
+            <lineargradient spreadMethod='reflect' id='downlineargradient' x1="0%" y1="0" x2="0%" y2="10%" xlink:href="#lineargradient"></lineargradient>
+        </defs>
+    </svg>
+    <svg width="100%" height='400'>
+        <rect x='200' y='0' width='100' height='200' style="fill: url(#lineargradient)"></rect>
+<rect x='400' y='0' width='100' height='200' style="fill: url(#downlineargradient)"></rect>
+
+<text x="10" y="30" style="font-size:12pt;"> F
+<tspan dy="4">a</tspan>
+<tspan dy="8">l</tspan>
+<tspan dy="12">l</tspan>
+</text>
+
+<text x="30" y="30" style="font-size:14pt">It’s
+<tspan rotate="5 10 -5 -20 0 15">shaken</tspan>, not stirred.
+</text>
+
+
+<g font-size="12pt">
+    <switch>
+        <g systemLanguage="en-UK">
+            <text x="10" y="30">A circle</text>
+            <text x="10" y="100">without colour.</text>
+        </g>
+        <g systemLanguage="en">
+            <text x="10" y="30">A circle</text>
+            <text x="10" y="100">without color.</text>
+        </g>
+        <g systemLanguage="es">
+            <text x="10" y="30">Un círculo</text>
+            <text x="10" y="100">sin color.</text>
+        </g>
+        <g >
+            <text x="10" y="30">Круг</text>
+            <text x="10" y="100">без света.</text>
+        </g>
+    </switch>
+</g>
+
+
+</svg>
+</body>
+
+</html>

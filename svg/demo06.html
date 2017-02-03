@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>svg</title>
+</head>
+
+<body>
+    <svg width="400px" height="300px" viewBox="0 0 400 300">
+        <ellipse cx="154" cy="154" rx="150" ry="120" style="fill: #999999;"/>
+        <ellipse cx="152" cy="152" rx="150" ry="120" style="fill: #cceeff;"/>
+        <path d="M 302 152 A 150 120, 0, 1, 0, 2 152 A 75 60, 0, 1, 0, 152 152" style="fill: #ffcccc;"/>
+        <path d="M 152 152 A 75 60, 0, 1, 1, 302 152" style="fill: #cceeff;"/>
+    </svg>
+    <svg width="400px" height="300px" viewBox="0 0 400 300">
+         <ellipse cx="154" cy="154" rx="150" ry="120" style="fill: #999999;"/>
+    </svg>
+    <svg width="400px" height="300px" viewBox="0 0 400 300">
+         <ellipse cx="152" cy="152" rx="150" ry="120" style="fill: #cceeff;"/>
+    </svg>
+    <svg width="400px" height="300px" viewBox="0 0 400 300">
+          <path d="M 302 152 A 150 120, 0, 1, 0, 2 152 A 75 60, 0, 1, 0, 152 152" style="fill: #ffcccc;"/>
+    </svg>
+    <svg width="400px" height="300px" viewBox="0 0 400 300">
+          <path d="M 152 152 A 75 60, 0, 1, 1, 302 152" style="fill: #cceeff;"/>
+    </svg>
+
+    <svg width='400' height='400'>
+        <!--Q命令 2次bezel curve d='M200 100 Q200 300 400 500 100 300 400 500'Q命令中参数可以连续写control point and   end point -->
+        <!--光滑的2次bezel curve和 3次 bezel curve的control point要注意,如果前面有Q(q)和C(c)则用前面的control point 否则current point 作为control point-->
+        <path d='M200 200 A50 50 0 1 1 300 200Q300 300 400 300 200 200 100 300Z' fill='red' stroke='blue' stroke-width='5'></path>
+    </svg>
+</body>
+
+</html>

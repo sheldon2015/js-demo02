@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>animateTransform 变换</title>
+    <style>
+
+    svg{
+      background: lightblue;
+    }
+
+    </style>
+</head>
+
+<body>
+  <svg width="100%" height="200">
+      <g transform="translate(100,60)">
+        <rect x="-10" y="-10" width="20" height="20" style="fill: #ff9; stroke: black;">
+            <animateTransform  attributeName="transform" type="scale" from="1" to="4 2" begin="1s" dur="2s" fill="freeze" />
+        </rect>
+      </g>
+  </svg>
+  <svg width="100%" height="200">
+      <rect x="-10" y="-10" width="20" height="20" style="fill: #ff9; stroke: black;">
+        <animateTransform attributeName="transform" id='tr1' type="translate" from="0" to="100 60" additive="sum" begin="0" dur="4" fill="freeze" />
+        <animateTransform attributeName="transform"  id='tr2' type="scale" from="1" to="4 2" additive="sum" begin="tr1.end" dur="4" fill="freeze" />
+        <animateTransform attributeName="transform"  type="rotate" from="0" to="45" additive="sum" begin="tr2.end" dur="4" fill="freeze" />
+      </rect>
+  </svg>
+
+</body>
+
+</html>

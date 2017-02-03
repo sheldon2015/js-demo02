@@ -19,23 +19,23 @@
 			color: #000;
 			margin-right: 20px;
 		}
-		
+
 		.inline-block {
 			display: inline-block;
 		}
-		
+
 		.container {
 			margin-top: 50px;
 		}
-		
+
 		.section {
 			margin-bottom: 100px;
 		}
-		
+
 		.section__title {
 			margin-bottom: 80px;
 		}
-		
+
 		.section__boxes {
 			font-size: 22px;
 		}
@@ -75,29 +75,27 @@
 	</div>
 
 	<script>
-  function debounce(fn, delay) {
-        var ctx;
-        var args;
-        var timer = null;
-        var later = function () {
-        fn.apply(ctx, args);
-        timer = null;
-        };
-        console.log('enter')
+		function debounce(fn, delay) {
+			var ctx;
+			var args;
+			var timer = null;
+			var later = function() {
+				fn.apply(ctx, args);
+				timer = null;
+			};
+			console.log('enter')
 
 
-        return function () {
-            ctx = this;
-            args = arguments;
-            if (timer) {
-                clearTimeout(timer);
-                timer = null;
-            }
-            timer = setTimeout(later, delay);
-        };
-  }
-
-
+			return function() {
+				ctx = this;
+				args = arguments;
+				if (timer) {
+					clearTimeout(timer);
+					timer = null;
+				}
+				timer = setTimeout(later, delay);
+			};
+		}
 
 
 
@@ -107,63 +105,63 @@
 
 
 
-  function throttle(fn, delay) {
-        var ctx;
-        var args;
-        var previous = Date.now();
-        var later = function () {
-        fn.apply(ctx, args);
-        };
-        console.log('enter')
+		function throttle(fn, delay) {
+			var ctx;
+			var args;
+			var previous = Date.now();
+			var later = function() {
+				fn.apply(ctx, args);
+			};
+			console.log('enter')
 
 
-        return function () {
-            ctx = this;
-            args = arguments;
-            var now = Date.now();
-            var diff = now - previous - delay;
-            if (diff >= 0) {
-                previous = now;
-                setTimeout(later, delay);
-            }
-        };
-  }
-  var debounceInputElmt = document.getElementById('debounceInput');
-  var debounceTargetElmt = document.getElementById('debounceTarget');
-
-
-
-
-  debounceInputElmt.addEventListener('input',
-  
-   debounce(function() {
-    debounceTargetElmt.value = (debounceInputElmt.value || '').toUpperCase();
-  }, 500)
-  
-  
-  );
+			return function() {
+				ctx = this;
+				args = arguments;
+				var now = Date.now();
+				var diff = now - previous - delay;
+				if (diff >= 0) {
+					previous = now;
+					setTimeout(later, delay);
+				}
+			};
+		}
+		var debounceInputElmt = document.getElementById('debounceInput');
+		var debounceTargetElmt = document.getElementById('debounceTarget');
 
 
 
+
+		debounceInputElmt.addEventListener('input',
+
+			debounce(function() {
+				debounceTargetElmt.value = (debounceInputElmt.value || '').toUpperCase();
+			}, 500)
+
+
+		);
 
 
 
 
 
-  var throttleInputElmt = document.getElementById('throttleInput');
-  var throttleTargetElmt = document.getElementById('throttleTarget');
 
 
-  
-  throttleInputElmt.addEventListener('input', 
-  
-  throttle(function() {
-    throttleTargetElmt.value = (throttleInputElmt.value || '').toUpperCase();
-  }, 500)
-  
-  
-  );
-</script>
+
+		var throttleInputElmt = document.getElementById('throttleInput');
+		var throttleTargetElmt = document.getElementById('throttleTarget');
+
+
+
+		throttleInputElmt.addEventListener('input',
+
+			throttle(function() {
+				throttleTargetElmt.value = (throttleInputElmt.value || '').toUpperCase();
+			}, 500)
+
+
+		);
+	</script>
 </body>
 
 </html>

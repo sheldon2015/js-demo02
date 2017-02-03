@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>与svg 交互</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <svg id='svg'>
+        <circle id="circle" cx="50" cy="50" r="20" style="fill: #ff9; stroke:black; stroke-width: 1"/>
+        <script>
+        function grow(evt) {
+            var obj = evt.target;
+            obj.setAttribute("r", "30");
+        }
+        function shrink(evt) {
+            this.setAttribute("r", "20");
+        }
+        function reStroke(evt) {
+            var w = evt.target.style.getPropertyValue("stroke-width");
+            w = 4 - parseFloat(w); /* toggle between 1 and 3 */
+            // evt.target.style.setProperty("stroke-width", w, null);
+            evt.target.style.strokeWidth=w;
+        }
+        var c = document.getElementById("circle");
+        c.addEventListener("mouseover", grow);
+        c.addEventListener("mouseout", shrink);
+        c.addEventListener("click", reStroke);
+      </script>
+  </svg>
+  <!------------------------------------------------------------------------------------------------>
+
+  <hr>
+
+<form method="get"  action='/demo01.html'   target="upload_iframe" id="my_form"  >
+    <div class="form-group">
+       	<a href="javascript:;" class="btn btn-default chooseFile">选择文件
+          	<input name="inputFile"   id="inputFile" /></a>
+        <button  id="submit_btn" type="submit" onclick="fileUpload();">Upload</button>
+    </div>
+</form>
+
+      <iframe  name='upload_iframe'></iframe>
+
+<script>    
+
+
+
+function fileUpload(){
+	var form = document.getElementById('my_form');
+	form.submit();
+    return false;
+}
+</script>
+
+
+</body>
+
+</html>

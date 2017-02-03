@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>检测是否支持canvas</title>
+    <style>
+
+    *{
+        margin: 0
+    }
+    canvas{
+        background: lightblue
+    }
+    </style>
+</head>
+
+<body>
+    <canvas id="container" width='800' height='800'>
+        <!--html检测或者通过下面的脚本检测-->
+        不支持canvas
+    </canvas>
+
+    <img id='image' src="./../../bg.png" alt="" style='display: none'>
+
+
+<script>
+        let canvas = document.querySelector("#container")
+
+        let context = canvas.getContext('2d')
+
+        context.save()
+        // save保存当前canvas样式信息到栈顶
+        context.beginPath()
+        context.strokeStyle = 'red'
+        context.moveTo(10, 10)
+        context.lineTo(90, 90);
+        context.stroke()
+        context.restore()
+
+
+        context.save()
+        //beginpath开启一条新的路径(此时为当前canvas的路径)
+
+        context.beginPath()
+        context.strokeStyle = 'black'
+        context.moveTo(90, 90)
+        context.lineTo(90, 180);
+        context.stroke()
+        context.restore()
+
+        // 一般的顺序，顺序对canvas的render有影响
+        context.save()
+        context.beginPath()
+        context.moveTo(200, 200)
+        context.strokeStyle = 'green'
+        context.fillStyle = 'red'
+        context.quadraticCurveTo(300, 300, 400, 200)
+        context.closePath()
+        context.fill()
+        context.stroke()
+        context.restore()
+
+
+        //创建渐变
+        context.save()
+        context.beginPath()
+        let linearGradient = context.createLinearGradient(0, 0, 800, 0)
+        linearGradient.addColorStop(0, 'red')
+        linearGradient.addColorStop(.5, 'black')
+        linearGradient.addColorStop(1, 'blue')
+        context.fillStyle = linearGradient;
+        context.fillRect(700, 700, 100, 100)
+        context.closePath()
+        context.fill()
+        context.restore()
+
+
+        //将外部图片render到canvas上,method-1,图片的load事件
+        let img = new Image();
+        img.src = './../../bg2.png'
+
+        img.onload = () => {
+            context.drawImage(img, 400, 400)
+        }
+        //将外部图片render到canvas上,method-2
+
+        let image = document.querySelector('#image')
+
+        image.onload = () => {
+
+            context.drawImage(image, 100, 700)
+        }
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

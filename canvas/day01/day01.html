@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>检测是否支持canvas</title>
+    <style>
+
+    *{
+        margin: 0
+    }
+    canvas{
+        background: lightblue
+    }
+
+    .test{
+        position: relative;
+        width: 100px;
+        height: 100px;
+        background: red;
+        margin: auto;
+        overflow: hidden
+
+    }
+
+    .after{
+        position: absolute;
+        content: '';
+        width: 200px;
+        height: 200px;
+        background: gray;
+        left:0;
+        top:0;
+        border-radius: 50%;
+        opacity: 1;
+        transform:scale(0)
+    }
+
+    .after.scale{
+        animation: scale .3s   linear   ;
+      
+    
+    }
+
+
+
+
+    @keyframes scale{
+
+        100%{
+              opacity: 0;
+              transform:scale(1)
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <canvas id="container" width='400' height='400'>
+        <!--html检测或者通过下面的脚本检测-->
+        不支持canvas
+    </canvas>
+
+
+    <script>
+        var context;
+        if (context = document.createElement('canvas').getContext) {
+            console.log(context)
+        }
+
+        var testEl = document.querySelector('.test');
+        var x = 0, flag = true;
+        // while (flag) {
+        //     x++;
+        //     testEl.style.transform = `translateX(${x}px)`;
+        //     if (x === 800) {
+        //         flag = false;
+        //     }
+
+        // }
+
+        // -----------------------------------------------------------------------------------
+
+        var id;
+        (function draw() {
+            x += 1
+            if (x <= 800) {
+                testEl.style.transform = `translateX(${x}px)`;
+                console.log(x)
+                requestAnimationFrame(draw)
+            }
+        })()
+
+       
+
+
+
+    </script>
+
+</body>
+
+</html>

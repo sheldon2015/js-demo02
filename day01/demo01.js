@@ -2,7 +2,7 @@
  *
  */
 
-var debounce = function (func, threshold, execAsap) {
+var debounce = function(func, threshold, execAsap) {
     var timeout;
 
     return function debounced() {
@@ -25,6 +25,6 @@ var debounce = function (func, threshold, execAsap) {
         timeout = setTimeout(delayed, threshold || 100);
     };
 }
-window.onresize = debounce(function () {
+window.onresize = debounce(function() {
     console.log('hello world');
 }, 100, true)

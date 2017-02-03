@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>检测是否支持canvas</title>
+    <style>
+
+    *{
+        margin: 0
+    }
+  
+
+    .after{
+     
+        width: 200px;
+        height: 200px;
+        background: gray;    
+        border-radius: 50%;
+       
+    }
+  
+    </style>
+</head>
+
+<body>
+
+
+    <div class="after"></div>
+
+
+    <script>
+        let testEl = document.querySelector('.after')
+        testEl.addEventListener('click', function (e) {
+            testEl.style.transform = 'scale(0)'
+            testEl.style.transition = 'transform .3s'
+
+         
+        })
+        testEl.addEventListener('transitionend', () => {
+            testEl.style.transform = 'scale(1)'
+        })
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

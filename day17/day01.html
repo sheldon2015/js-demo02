@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        关键帧动画 动画开始前 动画进行中 动画结束后 animation-fill-mode 属性对动画的影响
+    </title>
+    <style>
+
+    *{
+        margin: 0
+    }
+ 
+
+    .test{
+        position: relative;
+        width: 100px;
+        height: 100px;
+        background: red;
+        margin: auto;
+        overflow: hidden
+
+    }
+
+    .after{
+        position: absolute;
+        content: '';
+        width: 200px;
+        height: 200px;
+        background: gray;
+        left:0;
+        top:0;
+        border-radius: 50%;
+        opacity: 1;
+        transform:scale(0)
+    }
+
+    .after.scale{
+        animation: scale .3s   linear   ;
+      
+    
+    }
+
+
+
+
+    @keyframes scale{
+
+     
+
+        100%{
+              opacity: 0;
+              transform:scale(1)
+        }
+    }
+    </style>
+</head>
+
+<body>
+
+    <div class="test">
+        test
+    </div>
+
+    <script src='./../util/MyUtil.js'></script>
+    <script>
+
+
+        var testEl = document.querySelector('.test');
+        var x = 0, flag = true;
+
+
+        testEl.addEventListener('click', function (e) {
+            let position = positionOfCursor(this, e)
+
+
+            let afterEl = document.querySelector('.after')
+            afterEl && afterEl.remove();
+
+
+            let i = document.createElement('i')
+            testEl.appendChild(i)
+            // 100,100分别为test宽高的一半
+            i.style.left = parseInt(position.x) - 100 + 'px'
+            i.style.top = parseInt(position.y) - 100 + 'px'
+            i.classList.add('after');
+            i.classList.add('scale')
+
+
+
+
+        })
+
+        // afterEl.addEventListener('transitionend', () => {
+        //     console.log(1)
+        //     afterEl.style.transition = `none`
+        //     afterEl.style.transform = `scale(0)`
+        // })
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

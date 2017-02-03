@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>render 视频内容</title>
+    <style>
+
+    *{
+        margin: 0
+    }
+    canvas{
+        background: lightblue
+    }
+    </style>
+</head>
+
+<body>
+    <canvas id="container" width='800' height='800'></canvas>
+    <video autoplay id='video' width="320" height="240">
+        <source src="./../../movie.mp4">
+    </video>
+    <script>
+        window.onload = () => {
+            let canvas = document.querySelector("#container");
+
+            let context = canvas.getContext('2d');
+
+            let video = document.querySelector('#video');
+
+
+            (function drawFrame() {
+
+                context.drawImage(video, 300, 300)
+                requestAnimationFrame(drawFrame)
+            })()
+
+
+        }
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

@@ -8,88 +8,52 @@
 </head>
 
 <body>
-
-
 	<div class='demo' id="demo">aaaaaa</div>
 	<form action="">
-
-
-
-
 		<input type="file" multiple="multiple">
 	</form>
 
-
-
 	<script>
-        /**
-         * 当配置configurable : false后不能在修改当配置configurable和
-         * enumerable属性
-         */
-        
-                                var o = {};
+		/**
+		 * 当配置configurable : false后不能在修改当配置configurable和
+		 * enumerable属性
+		 */
 
+		var o = {};
+		Object.defineProperty(o, "a", {
+			value: 1,
+			writable: true,
+			configurable: false,
+			enumerable: true
+		});
+		Object.defineProperty(o, "a", {
+			value: 4,
+			writable: false,
+			configurable: false,
+			enumerable: true
+		});
+		Object.defineProperty(o, "b", {
+			get: function() {
+				return this.a * 1000000;
+			},
+			set: function() {},
+			configurable: false,
+			enumerable: true
+		});
 
-        Object.defineProperty(o, "a", {
-            value: 1,
-            writable: true,
-            configurable: false,
-            enumerable: true
-        });
+		var m = {
+			a: 111,
+			get a() {
+				return 11111111111;
+			},
+			set a(x) {
 
+				this.a = 333333333333333333333333
 
-
-
-        Object.defineProperty(o, "a", {
-            value: 4,
-            writable: false,
-            configurable: false,
-            enumerable: true
-        });
-
-
-
-
-
-        Object.defineProperty(o, "b", {
-
-            get: function() {
-
-                return this.a * 1000000;
-
-            },
-            set: function() {
-
-
-
-            },
-
-            configurable: false,
-            enumerable: true
-        });
-
-
-        var m = {
-
-            a: 111,
-            get a() {
-                return 11111111111;
-            },
-            set a(x) {
-
-                this.a = 333333333333333333333333
-
-                // this.a=x
-            }
-
-
-
-        }
-    </script>
-
-
-
+				// this.a=x
+			}
+		}
+	</script>
 </body>
-
 
 </html>
